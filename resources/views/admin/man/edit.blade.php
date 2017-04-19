@@ -1,6 +1,6 @@
 @extends('admin.admin')
 @section('content_admin')
-<form action="store" method="POST" accept-charset="utf-8" class="form-group">
+<form action="{{asset('admin/man/update')}}/{{$data->id}}" method="POST" accept-charset="utf-8" class="form-group">
   <h2><center>Chỉnh sửa thông tin khách hàng</center></h2>
   <div class="form-group">
    <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -19,34 +19,41 @@
   <div class="form-group">
     <label for="role" class="col-sm-2 control-label">3.Role:</label>
     <div class="col-sm-10">
-      <input type="text" name="role" class="form-control" id="role" value="{{$data->role}}" placeholder="admin">
+      <input type="text" name="role" class="form-control" id="role" value="{{$data->role}}" placeholder="admin" readonly>
     </div>
   </div>
   <div class="form-group">
     <label for="phone" class="col-sm-2 control-label">4.Phone:</label>
     <div class="col-sm-10">
-      <input type="text" name="phone" class="form-control" id="phone" value="{{$data->phone}}" placeholder="0989686392">
+      <input type="text" name="phone" class="form-control" id="phone" value="{{$data->phone}}" readonly>
     </div>
   </div>
 <br>
     <div class="form-group">
     <label for="password" class="col-sm-2 control-label">5.Password:</label>
     <div class="col-sm-10">
-      <input type="text" name="password" class="form-control" id="password" value="{{$data->password}}" placeholder="******">
+      <input type="text" name="password" class="form-control" id="password" value="{{$data->password}}" readonly>
     </div>
     </div>
+
     <div class="form-group">
     <label for="mobile" class="col-sm-2 control-label">6.Mobile:</label>
     <div class="col-sm-10">
       <input type="text" name="mobile" class="form-control" id="mobile" value="{{$data->mobile}}" placeholder="0989686392">
     </div>
     </div>
+
     <div class="form-group">
     <label for="sex" class="col-sm-2 control-label">7.Sex:</label>
     <div class="col-sm-10">
-      <input type="text" name="mobile" class="form-control" id="sex" value="{{$data->sex}}" placeholder="nam">
+       <select class="form-control" id="sex" name="sex">
+        <option value="{{$data->sex}}">{{$data->sex}}</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+       </select>
     </div>
     </div>
+
     <div class="form-group">
     <label for="CMND" class="col-sm-2 control-label">8.CMND:</label>
     <div class="col-sm-10">

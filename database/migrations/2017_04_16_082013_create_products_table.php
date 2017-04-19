@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->integer('idCatalog');
             $table->integer('idProducer');
             $table->string('name', 100);
-            $table->float('price');
-            $table->float('saleRate');
-            $table->mediumText('detail');
+            $table->float('price')->nullable();;
+            $table->float('saleRate')->nullable();;
+            $table->mediumText('detail')->nullable();;
             $table->timestamps();
         });
     }

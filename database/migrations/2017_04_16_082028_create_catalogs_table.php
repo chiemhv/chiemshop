@@ -17,7 +17,7 @@ class CreateCatalogsTable extends Migration
             $table->increments('idCatalog');
             $table->integer('idFx');
             $table->string('name');
-            $table->string('detail');
+            $table->string('detail')->nullable();;
             $table->timestamps();
         });
     }

@@ -3,25 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-class ManCtrl extends Controller
+use App\Catalog;
+use App\Fx;
+class CatalogCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function findQuery(Request $request){
-        //echo $request;
-       $data = User::findQuery($request);
-      // dd($data);
-        return view('admin.man.index')->with('data', $data);
-    }
     public function index()
     {
         //
-        $data = User::all();
-        return view('admin.man.index')->with('data', $data);
+         $data =Catalog::getAll();
+         //dd($data);
+         return view('admin.catalog.index')->with('data', $data);
 
     }
 
@@ -33,7 +29,8 @@ class ManCtrl extends Controller
     public function create()
     {
         //
-        return view('admin.man.create');
+        $dataFx =Fx::all();
+        return view('admin.catalog.create')->with('data', $dataFx);
     }
 
     /**
@@ -45,9 +42,9 @@ class ManCtrl extends Controller
     public function store(Request $request)
     {
         //
-        User::insertGetId($request);
-        return redirect()->route('admin.man');
-
+        Catalog::insertGetId($request);
+       // dd($request->toArray());
+        return redirect()->route('admin.catalog');
     }
 
     /**
@@ -70,8 +67,10 @@ class ManCtrl extends Controller
     public function edit($id)
     {
         //
-        $data = User::find($id);
-        return view('admin.man.edit')->with('data', $data);
+        $dataFx =Fx::all();
+
+        $dataCatalog = Catalog::getById($id);
+        return view('admin.catalog.edit')->with('data', $dataFx)->with('dataCatalog', $dataCatalog);
     }
 
     /**
@@ -84,8 +83,6 @@ class ManCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
-          User::updateById($request, $id);
-          return redirect()->route('admin.man');
     }
 
     /**
@@ -97,7 +94,7 @@ class ManCtrl extends Controller
     public function destroy($id)
     {
         //
-        User::destroyById($id);
-        return redirect()->route('admin.man');
+        Catalog::destroyById($id);
+      return redirect()->route('admin.catalog');
     }
 }

@@ -1,7 +1,8 @@
 @extends('admin.admin')
 @section('content_admin')
-<span><h3><center>QUẢN LÝ KHÁCH HÀNG</center></h3></span>
-<form method="POST" action="#" class="form-inline">
+<span><h3><center><b>QUẢN LÝ KHÁCH HÀNG</b></center></h3></span>
+<form method="POST" action="{{asset('admin/man')}}" class="form-inline">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	   <div class="form-group">
 	    <label for="Phone">Phone : </label>
 	    <input type="text" class="form-control" id="phone" placeholder="0989686392" name="phone">
@@ -14,7 +15,8 @@
 	    <label for="name">Name : </label>
 	    <input type="text" class="form-control" id="name" placeholder="đại ka chiêm" name="name">
 	   </div>
-	  <button type="submit" class="btn btn-default">Tìm kiếm</button>
+	  <button type="submit" class="btn btn-success">Tìm kiếm</button>
+    <button type="reset" class="btn btn-success">Reset</button>
 </form>
 <table class="table table-striped">
   <tbody>

@@ -17,8 +17,8 @@ class CreatePicturesTable extends Migration
             $table->increments('idPicture');
             $table->integer('idProduct');
             $table->string('url');
-            $table->string('title');
-            $table->string('detail');
+            $table->string('title')->nullable();;
+            $table->string('detail')->nullable();;
             $table->timestamps();
         });
     }

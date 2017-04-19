@@ -3,26 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-class ManCtrl extends Controller
+use App\Product;
+use App\Catalog;
+use App\Producer;
+class ProductCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function findQuery(Request $request){
-        //echo $request;
-       $data = User::findQuery($request);
-      // dd($data);
-        return view('admin.man.index')->with('data', $data);
+    public function sale(){
+        $catalog = Catalog::all();
+        $producer = Producer::all();
+        $data = Product::spSale();
+        return view('admin.product.sale')->with('data', $data)->with('catalog', $catalog)->with('producer', $producer);
     }
     public function index()
     {
         //
-        $data = User::all();
-        return view('admin.man.index')->with('data', $data);
-
+        $catalog = Catalog::all();
+        $producer = Producer::all();
+        $data = Product::getAll();
+        return view('admin.product.index')->with('data', $data)->with('catalog', $catalog)->with('producer', $producer);
     }
 
     /**
@@ -33,7 +36,10 @@ class ManCtrl extends Controller
     public function create()
     {
         //
-        return view('admin.man.create');
+        $catalog = Catalog::all();
+        $producer = Producer::all();
+        return view('admin.product.create')->with('catalog', $catalog)->with('producer', $producer);
+
     }
 
     /**
@@ -45,9 +51,8 @@ class ManCtrl extends Controller
     public function store(Request $request)
     {
         //
-        User::insertGetId($request);
-        return redirect()->route('admin.man');
-
+        Product::insertGetId($request);
+        return redirect()->route('admin.product');
     }
 
     /**
@@ -70,8 +75,10 @@ class ManCtrl extends Controller
     public function edit($id)
     {
         //
-        $data = User::find($id);
-        return view('admin.man.edit')->with('data', $data);
+         $catalog = Catalog::all();
+        $producer = Producer::all();
+        $getForEdit = product::getForEdit($id);
+        return view('admin.product.edit')->with('catalog', $catalog)->with('producer', $producer)->with('getForEdit', $getForEdit);
     }
 
     /**
@@ -84,8 +91,8 @@ class ManCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
-          User::updateById($request, $id);
-          return redirect()->route('admin.man');
+        Product::updateById($id, $request);
+        return redirect()->route('admin.product');
     }
 
     /**
@@ -97,7 +104,7 @@ class ManCtrl extends Controller
     public function destroy($id)
     {
         //
-        User::destroyById($id);
-        return redirect()->route('admin.man');
+        Product::destroyById($id);
+        return redirect()->route('admin.product');
     }
 }

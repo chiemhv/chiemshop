@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-	<div class="row" id="menu-header">
+	<div class="row" id="menu-header" class="bg-info">
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
@@ -21,7 +21,7 @@
 		        <li><a href="#">Thông báo</a></li>
 		        <li><a href="#">Kế hoạch kinh doanh</a></li>
 		        <li><a href="#">Thông tin nhân viên</a></li>
-		        <li><a href="#">Đăng xuất</a></li>
+		        <li><a href="#">CHÀO ADMIN :{{ Auth::user()->name }}</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -52,9 +52,9 @@
 			<ul>
 			  <li><a href="{{URL::to('admin/fx')}}">FX</a></li>
 			  <li><a href="{{URL::to('admin/catalog')}}">Catalog</a></li>
-			  <li><a href="#">Producer</a></li>
-			  <li><a href="#">Product</a></li>
-			  <li><a href="#">Sản phẩm khuyến mãi</a> </li>
+			  <li><a href="{{URL::to('admin/producer')}}">Producer</a></li>
+			  <li><a href="{{URL::to('admin/product')}}">Product</a></li>
+			  <li><a href="{{URL::to('admin/product/sale')}}">Sản phẩm khuyến mãi</a> </li>
 			</ul>
 			<label>MEDIA</label>
 			<ul>

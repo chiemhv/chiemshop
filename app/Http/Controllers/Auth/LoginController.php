@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';  // sau khi đăng nhập xong thì chuyển đến trang này . 
 
     /**
      * Create a new controller instance.

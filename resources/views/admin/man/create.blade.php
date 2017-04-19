@@ -32,7 +32,7 @@
     <div class="form-group">
     <label for="password" class="col-sm-2 control-label">5.Password:</label>
     <div class="col-sm-10">
-      <input type="text" name="password" class="form-control" id="password" placeholder="******">
+      <input type="password" name="password" class="form-control" id="password">
     </div>
     </div>
     <div class="form-group">
@@ -44,7 +44,12 @@
     <div class="form-group">
     <label for="sex" class="col-sm-2 control-label">7.Sex:</label>
     <div class="col-sm-10">
-      <input type="text" name="mobile" class="form-control" id="sex" placeholder="nam">
+      <select class="form-control" id="sex" name="sex">
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="KB">Không rõ</option>
+      </select>
+      <!--<input type="text" name="mobile" class="form-control" id="sex" placeholder="nam"> -->
     </div>
     </div>
     <div class="form-group">

@@ -16,10 +16,10 @@ class CreateProducersTable extends Migration
         Schema::create('producers', function (Blueprint $table) {
             $table->increments('idProducer');
             $table->string('name');
-            $table->string('man');
-            $table->string('phone');
-            $table->text('address');
-            $table->string('detail');
+            $table->string('man')->nullable();;
+            $table->string('phone')->nullable();;
+            $table->text('address')->nullable();;
+            $table->string('detail')->nullable();;
             $table->timestamps();
         });
     }

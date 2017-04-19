@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/home');    // sau khi đăng ký xong thì chuyển đến trang này 
         }
 
         return $next($request);

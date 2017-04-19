@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Xin điền thông tin để đăng ký tài khoản</div>
+                <div class="panel-heading"><b>Xin điền thông tin để đăng ký tài khoản</b></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}

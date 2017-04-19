@@ -3,26 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-class ManCtrl extends Controller
+use App\Producer;
+class ProducerCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function findQuery(Request $request){
-        //echo $request;
-       $data = User::findQuery($request);
-      // dd($data);
-        return view('admin.man.index')->with('data', $data);
-    }
     public function index()
     {
         //
-        $data = User::all();
-        return view('admin.man.index')->with('data', $data);
-
+       $data =  Producer::getAll();
+        return view('admin.producer.index')->with('data', $data);
     }
 
     /**
@@ -33,7 +26,7 @@ class ManCtrl extends Controller
     public function create()
     {
         //
-        return view('admin.man.create');
+        return view('admin.producer.create');
     }
 
     /**
@@ -45,9 +38,8 @@ class ManCtrl extends Controller
     public function store(Request $request)
     {
         //
-        User::insertGetId($request);
-        return redirect()->route('admin.man');
-
+        Producer::insertGetId($request);
+        return redirect()->route('admin.producer');
     }
 
     /**
@@ -70,8 +62,8 @@ class ManCtrl extends Controller
     public function edit($id)
     {
         //
-        $data = User::find($id);
-        return view('admin.man.edit')->with('data', $data);
+        $data = Producer::getById($id)->toArray();
+        return view('admin.producer.edit')->with('data', $data);
     }
 
     /**
@@ -84,8 +76,8 @@ class ManCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
-          User::updateById($request, $id);
-          return redirect()->route('admin.man');
+        Producer::updateById($id, $request);
+         return redirect()->route('admin.producer');
     }
 
     /**
@@ -97,7 +89,7 @@ class ManCtrl extends Controller
     public function destroy($id)
     {
         //
-        User::destroyById($id);
-        return redirect()->route('admin.man');
+        Producer::destroyById($id);
+        return redirect()->route('admin.producer');
     }
 }
